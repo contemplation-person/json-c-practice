@@ -1,39 +1,42 @@
 # **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: juha <jy.h4456@arielnetworks.co.kr>        +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#                                                      #+#    #+#              #
-#                                                     ###   ########seoul.kr   #
-#                                                                              #
+#																			  #
+#														 :::	  ::::::::	#
+#	Makefile										   :+:	  :+:	:+:	#
+#													 +:+ +:+		 +:+	  #
+#	By: juha <jy.h4456@arielnetworks.co.kr>		+#+  +:+	   +#+		 #
+#												 +#+#+#+#+#+   +#+			#
+#													  #+#	#+#			  #
+#													 ###   ########seoul.kr   #
+#																			  #
 # **************************************************************************** #
 
-SRCS_DIR 		:=	src
-OBJ_DIR			:=	obj
+CC			  	:=	gcc
+CFLAGS		  	:=	-Wall -Wextra -Werror
 
-CC				:=	gcc
-NAME			:=	p_json
-SRC				:=  json_c_practice.c
+NAME			:=	let_dancing_with_json
+
+SRCS_DIR		:=	srcs
+SRC				:=	main.c 
 SRCS			:=	$(addprefix $(SRCS_DIR)/, $(SRC))
+
+OBJ_DIR			:=	objs
 OBJS			:=	$(SRC:%.c=$(OBJ_DIR)/%.o)
 
 RM				:=	rm -rf
-CFLAGS			:=	-Wall -Wextra -Werror
-INCLUDE			:=  -Ilibari
+INCLUDE			:=	-Ilibari
 
-#-Ltest
-LIB_PATH		:=	-Lari
-LIB_DIR_NAME	:= 	-l
+LIB_PATH		:=	$(PWD)/libari
+LIB_DIR			:=	-ljson-c
 
-$(OBJ_DIR)/%.o:		$(SRCS_DIR)/%.c
+.PHONY:all clean fclean re test
+
+$(OBJ_DIR)/%.o:		$(SRCS)
 					@mkdir -p $(@D)
 					@$(CC) $(CFLAGS) $(INCLUDE) -o $@ -c $<
 
 $(NAME):			$(OBJS)
-					@$(MAKE) -C $(LIB_PATH) libari.a
-					$(CC) $(CFLAGS) $(INCLUDE) $(OBJS) $(LIB_DIR) -o $(NAME)
+					@$(MAKE) -C $(LIB_PATH)
+					$(CC) $(CFLAGS) $(INCLUDE) $(OBJS) $(LIB_DIR) libari/libari.a -o $(NAME) 
 
 all:				$(NAME)
 
@@ -48,9 +51,6 @@ fclean:				clean
 re:					fclean
 					@$(MAKE) all
 
-bonus:				all
-
-.PHONY:				all clean fclean re test
 
 test: 
-	gcc main.c libari.a srcs/json_c_practice.c -ljson-c -o testoutput && ./testoutput < test/reqSet/mcp_req.json
+	$(MAKE) && ./$(NAME) < test/reqSet/mcp_req.json
