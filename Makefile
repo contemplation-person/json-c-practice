@@ -13,7 +13,7 @@
 CC			  	:=	gcc
 CFLAGS		  	:=	-Wall -Wextra -Werror
 
-NAME			:=	let_dancing_with_json
+NAME			:=	cjeon
 
 SRCS_DIR		:=	srcs
 SRC				:=	main.c 
