@@ -51,6 +51,8 @@ fclean:				clean
 re:					fclean
 					@$(MAKE) all
 
+CFLAGS				+= -g3
 
-test: 
-	$(MAKE) && ./$(NAME) < test/reqSet/mcp_req.json
+test: $(NAME)
+	clear && ./cjeon
+	
