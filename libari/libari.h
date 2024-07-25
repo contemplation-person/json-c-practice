@@ -6,7 +6,17 @@
 # include <stdlib.h>
 # include <sys/types.h>
 # include <string.h>
+
+# define ASCII_COLOR_RED "\x1b[1;31m"
+# define ASCII_COLOR_GREEN "\x1b[1;32m"
+# define ASCII_COLOR_YELLOW "\x1b[1;33m"
+# define ASCII_COLOR_BLUE "\x1b[1;34m"
+# define ASCII_COLOR_MAGENTA "\x1b[1;35m"
+# define ASCII_COLOR_CYAN "\x1b[1;36m"
+# define ASCII_COLOR_RESET "\x1b[0m"
+
 //======================get_next_line.src==============
+
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 100
 # endif
@@ -44,5 +54,6 @@ void		set_fd_list(t_g_list **fd_lst, t_g_list *prev, int fd);
 char		*ari_get_next_line(int fd);
 size_t      ari_putstr_fd(const char *s, int fd);
 size_t      ari_putendl_fd(const char *s, int fd);
+void        ari_title_print(const char *string); 
 
 #endif

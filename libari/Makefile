@@ -1,21 +1,27 @@
-CC 			= 	gcc
-CPPFLAGS	= 	-Wall -Wextra -Werror
+GREEN			=	\e[0;32m
+RESET_COLOR		=	\e[0;37m
 
-NAME		= 	libari.a	
-SRC 		= 	ari_get_next_line.c  ari_putendl_fd.c  ari_putstr_fd.c
-OBJS	  	= 	$(SRC:.c=.o)
+CC 				= 	gcc
+CPPFLAGS		= 	-Wall -Wextra -Werror
+
+NAME			= 	libari.a	
+SRC 			= 	ari_get_next_line.c \
+					ari_putendl_fd.c \
+					ari_putstr_fd.c \
+					ari_title_print.c
+
+OBJS	  		= 	$(SRC:.c=.o)
 				
-AR			= 	ar
-ARFLAG		= 	rsc
+AR				= 	ar
+ARFLAG			= 	rsc
 
 .PHONY: all clean fclean re 
 
 $(NAME) : $(OBJS)
 	$(AR) $(ARFLAG) $@ $^
+	echo "\n"
 
 all: $(NAME)
-
-bonus: $(NAME)
 
 clean:
 	@rm -f $(OBJS)
