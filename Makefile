@@ -51,7 +51,7 @@ fclean:				clean
 re:					fclean
 					@$(MAKE) all
 
-CFLAGS				+= -g3
+CFLAGS				+= -fsanitize=address
 
 test: $(NAME)
 	clear && ./cjeon
