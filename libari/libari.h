@@ -15,6 +15,14 @@
 # define ASCII_COLOR_CYAN "\x1b[1;36m"
 # define ASCII_COLOR_RESET "\x1b[0m"
 
+# define COLOR_RED_CODE 1
+# define COLOR_GREEN_CODE 2
+# define COLOR_YELLOW_CODE 3
+# define COLOR_BLUE_CODE 4
+# define COLOR_MAGENTA_CODE 5
+# define COLOR_CYAN_CODE 6
+# define COLOR_RESET_CODE 7
+
 //======================get_next_line.src==============
 
 # ifndef BUFFER_SIZE
@@ -54,6 +62,6 @@ void		set_fd_list(t_g_list **fd_lst, t_g_list *prev, int fd);
 char		*ari_get_next_line(int fd);
 size_t      ari_putstr_fd(const char *s, int fd);
 size_t      ari_putendl_fd(const char *s, int fd);
-void        ari_title_print(const char *string); 
+void        ari_title_print(const char *string, const int color_code); 
 
 #endif
