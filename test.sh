@@ -2,8 +2,7 @@
 
 while true
 do
-    clear
-    make && ./let_dancing_with_json
-    sleep 2
+    make && ./cjeon
+    sleep 1
 done
 
