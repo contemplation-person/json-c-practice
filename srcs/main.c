@@ -229,7 +229,7 @@ int main()
 {
     // json object 파일 받기
     ari_title_print("0. get json file", COLOR_GREEN_CODE);
-    json_object *json = get_json_file_from( "/home/juha/json-c-practice/test/reqSet/mcp_req.json");
+    json_object *json = get_json_file_from( "./test/reqSet/mcp_req.json");
 
     practice_insertion(json);
     // system("sleep 5 && clear");
