@@ -54,5 +54,5 @@ re:					fclean
 CFLAGS				+= -fsanitize=address
 
 test: $(NAME)
-	clear && ./cjeon
+	clear && ./$(NAME)
 	
